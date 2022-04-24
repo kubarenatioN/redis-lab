@@ -1,63 +1,35 @@
-/* eslint-disable no-unexpected-multiline */
-const express = require('express')
-const cors = require('cors')
-const redis = require('redis')
-const db = {
-	products: {
-		desktops: [
-			{
-				id: 1,
-				name: 'Lenovo'
-			},
-			{
-				id: 2,
-				name: 'HP'
-			}
-		],
-		laptops: [
-			{
-				id: 1,
-				name: 'Dell'
-			},
-			{
-				id: 2,
-				name: 'Lenovo'
-			}
-		],
-		tablets: [
-			{
-				id: 1,
-				name: 'iPad'
-			},
-			{
-				id: 2,
-				name: 'Samsung'
-			}
-		]
-	}
-}
+import express from'express'
+import cors from'cors'
+import redis from'redis'
 
-
-const PORT = 4242
+const PORT = 3002
+const CHANNEL = 'testChannel'
 const app = express()
 
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
 
 const publisher = redis.createClient()
 
-app.get('/', (req, res) => {
-	publisher.publish('test', 'hello from publisher')
-	res.json({
-		'hello': 'test'
-	})
+publisher.on('connect', () => {
+	console.log('Publisher Connected!');
 })
 
-app.get('/goods', (req, res) => {
-	const { products } = db
-	// publisher.publish('test', 'hello from publisher')
-	res.json({products})	
+app.get('/pub', (req, res) => {
+	console.log('gonna publish');
+	publisher.publish('test', 'text')
+	res.json('server /pub')
 })
 
-app.listen(PORT, () => {
+app.post('/publish', (req, res) => {
+	const { body } = req
+	console.log('gonna publish from post', body);
+	publisher.publish('test', JSON.stringify(body))
+	res.json('server /pub')
+})
+
+app.listen(PORT, async () => {
 	console.log(`Server has been started on port ${PORT}`)
+	await publisher.connect()
 })

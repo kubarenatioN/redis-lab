@@ -2,6 +2,7 @@
   "name": "webpack-starter",
   "version": "1.0.0",
   "description": "A light foundation for your next frontend project based on webpack.",
+  "type": "module",
   "scripts": {
     "lint": "npm run lint:styles; npm run lint:scripts",
     "lint:styles": "stylelint src",
@@ -66,8 +67,10 @@
     "express": "^4.17.3",
     "net": "^1.0.2",
     "nodemon": "^2.0.15",
+    "query-string": "^7.1.1",
     "redis": "^4.0.6",
     "tls": "0.0.1",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "ws": "^8.5.0"
   }
 }

@@ -1,9 +1,9 @@
-const Path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import Path from'path'
+import { CleanWebpackPlugin } from'clean-webpack-plugin'
+import CopyWebpackPlugin from'copy-webpack-plugin'
+import HtmlWebpackPlugin from'html-webpack-plugin'
 
-module.exports = {
+export default {
   entry: {
     app: Path.resolve(__dirname, '../src/scripts/index.js'),
   },

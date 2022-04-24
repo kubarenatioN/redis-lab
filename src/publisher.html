@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Publication</title>
+    <link rel="stylesheet" href="./styles/publisher.css">
+</head>
+
+<body>
+    <h1>Publisher</h1>
+
+    <div class="wrapper">
+
+        <form id="form">
+            <select name="category">
+                <option value="desktops">Компьютеры</option>
+                <option value="laptops">Ноутбуки</option>
+                <option value="phones">Смартфоны</option>
+            </select>
+            <input type="text" name="title" placeholder="Заголовок статьи">
+            <textarea id="descr" name="descr" placeholder="Ваш текст"></textarea>
+
+            <button id="send-btn" type="submit">Send</button>
+        </form>
+
+    </div>
+
+    <script src="./scripts/publisher.js"></script>
+</body>
+
+</html>

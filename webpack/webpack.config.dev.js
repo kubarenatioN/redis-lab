@@ -1,10 +1,10 @@
-const Path = require('path');
-const Webpack = require('webpack');
-const { merge } = require('webpack-merge');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
+import * as Path from 'path'
+import Webpack from 'webpack'
+import { merge } from 'webpack-merge'
+import ESLintPlugin from 'eslint-webpack-plugin'
+import StylelintPlugin from 'stylelint-webpack-plugin'
 
-const common = require('./webpack.common.js');
+import common from './webpack.common.js'
 
 module.exports = merge(common, {
   target: 'web',
